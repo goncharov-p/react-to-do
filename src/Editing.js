@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import logo from './editing.png';
 
 const Editing = ({task, dischargeEditTask}) => {
     const [text, setText] = useState(task.text);
@@ -19,9 +20,9 @@ const Editing = ({task, dischargeEditTask}) => {
         :alert("Поле не может быть пустым!")
     }
     return (
-        <div>
+        <div className="newText">
        <input type='text' value={text} onChange = {(e) => setText(e.target.value)}/>
-       <button onClick={() => updateTaskText()}>Добавить изменение</button>
+       <button onClick={() => updateTaskText()}>Изменить</button>
         </div>
     )
 }

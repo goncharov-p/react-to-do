@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import { InputGroup } from 'react-bootstrap';
 import { FormControl } from 'react-bootstrap';
+import logo from './editing.png';
 
 
 
@@ -86,7 +87,7 @@ const dischargeEditTask = (newText,id) => {
           <input type='text' value={text} onChange={(e) => setText(e.target.value)}/>
           <button variant="primary" size="lg" onClick={() => addNewATask()}>Add new</button>
        </div>
-       <div>
+       <div className='tasks-block'>
           {
             tasks
             .sort((a,b)=>{
@@ -97,9 +98,13 @@ const dischargeEditTask = (newText,id) => {
                 <div key={`${task._id}`} className='task'> 
                   <input  className="input-checkbox" type="checkbox" checked={task.isCheck} onChange={()=>handleChangeCheckbox(task._id,task.isCheck)}/>
                   {editTask !== task ? 
-                  <div className='text-block'> {task.isCheck?<span className='text-line'>{task.text}</span>: <span className='text'>{task.text}</span>} <button onClick={() => setEditTask(task)}>Редактировать</button></div> 
-                  :(<Editing task={editTask} dischargeEditTask={dischargeEditTask}/>) } 
-                  <button onClick={() => deleteTask(task._id)}>Delete</button>
+                  <div className='text-block'> 
+                  {task.isCheck?
+                      <span className='text-line'>{task.text}</span>
+                      :<span className='text'>{task.text}</span>}  <img src={logo} alt="logo" onClick={() => setEditTask(task)}/> 
+                    <button className='button-delete' onClick={() => deleteTask(task._id)}>X</button>   
+                  </div> 
+                  :(<Editing task={editTask} dischargeEditTask={dischargeEditTask}/>) }           
                 </div>
             ))
           }

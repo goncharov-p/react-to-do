@@ -7,11 +7,11 @@ flex-direction: column;
 
 .text-line{
 text-decoration: line-through;
-width: 50%;
+width: 90%;
 }
 
 .text{
-  width: 50%;
+  width: 90%;
 }
 
 .task{
@@ -38,6 +38,27 @@ input{
 }
 
 .text-block{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tasks-block{
+  margin-top: 20px;
+}
+
+.button-delete{
+  border-radius: 50%;
+  background-color: red;
+  font-size: 18px;
+}
+
+img{
+  width: 25px;
+  height: 25px;
+}
+
+.newText{
   width: 100%;
   display: flex;
   justify-content: space-between;
