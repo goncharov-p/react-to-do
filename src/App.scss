@@ -1,0 +1,44 @@
+.main{
+margin: auto;
+display: flex;
+justify-content: center;
+flex-direction: column;
+}
+
+.text-line{
+text-decoration: line-through;
+width: 50%;
+}
+
+.text{
+  width: 50%;
+}
+
+.task{
+  display: flex;
+  justify-content: baseline;
+  width: 500px;
+  margin: auto;
+}
+
+h1{
+  margin: auto;
+}
+
+input{
+  width: 70%;
+}
+
+.input-one{
+  margin: auto;
+}
+
+.input-checkbox{
+  width: 10%;
+}
+
+.text-block{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
