@@ -2,11 +2,7 @@ import React, { useState,useEffect  } from 'react';
 import axios from 'axios';
 import Editing from './Editing';
 import './App.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
-import { InputGroup } from 'react-bootstrap';
-import { FormControl } from 'react-bootstrap';
-import logo from './editing.png';
+import logo from './images/editing.png';
 
 
 
@@ -14,16 +10,17 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
   const [text, setText] = useState('');
   const [editTask, setEditTask] = useState(null);
+  const link = `http://localhost:8000`;
   
   useEffect(async() => {
-    await axios.get('http://localhost:8000/allTasks').then(res =>{
+    await axios.get(`${link}/allTasks`).then(res =>{
       setTasks(res.data.data);
     });
   }, [] )
 
   const addNewATask = async() =>{
     text?
-    await axios.post('http://localhost:8000/createTask', {
+    await axios.post(`${link}/createTask`, {
       text,
       isCheck: false
     }).then(res => {
@@ -35,7 +32,7 @@ const App = () => {
   }
 
 const deleteTask = async(id,index) =>{
-  await axios.delete(`http://localhost:8000/deleteTask?id=${id}`).then(res => {
+  await axios.delete(`${link}/deleteTask?id=${id}`).then(res => {
     if (res.status !== 200) {
       alert('Ошибка!')
     } else {
@@ -48,7 +45,7 @@ const deleteTask = async(id,index) =>{
 
 
 const handleChangeCheckbox = async(id,Check) => {
-  await axios.patch(`http://localhost:8000/updateTask`,{
+  await axios.patch(`${link}/updateTask`,{
         id:id,
         isCheck:!Check,
         }).then(res => {
